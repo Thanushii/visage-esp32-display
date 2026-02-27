@@ -308,26 +308,7 @@ visage-esp32-display/
 ├── .gitignore           # Git ignore rules
 └── README.md            # This file
 ```
-
-### Key Functions
-
-- `setup()` - Initialize hardware, WiFi, and web server
-- `loop()` - Main event loop for touch handling and display updates
-- `callTriggerRecognition()` - Trigger face recognition via edge API
-- `renderMessagePage()` - Display attendance notification
-- `drawUpdateButton()` - Render mode switch button
-- `handleTouchEvent()` - Process touch input
-
-## 📝 Configuration Variables
-
-| Variable                    | Default                     | Description                             |
-| --------------------------- | --------------------------- | --------------------------------------- |
-| `edgeApiBaseUrl`            | `http://192.168.1.100:8000` | Base URL for edge API                   |
-| `centralServerEndpoint`     | API endpoint                | Central server update URL               |
-| `centralServerApiKey`       | `26PytkCBcZ`                | API authentication key                  |
-| `centralServerEnabled`      | `true`                      | Enable/disable central server sync      |
-| `RETURN_TO_DEFAULT_TIMEOUT` | `8000` ms                   | Time before returning to welcome screen |
-| `RECOGNITION_TIMEOUT`       | `10000` ms                  | Face recognition timeout                |
+             |
 
 ## 🤝 Contributing
 
