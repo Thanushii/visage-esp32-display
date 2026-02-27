@@ -4,7 +4,7 @@ A touch-enabled ESP32 display controller for the Visage attendance system with f
 
 ## 🖥️ Overview
 
-Visage ESP32 Display is an IoT display controller that serves as a visual interface for the Visage attendance system. It features a capacitive touchscreen interface, WiFi connectivity, and RESTful API endpoints for real-time attendance notifications and face recognition integration.
+Visage ESP32 Display is an IoT display controller that serves as a visual interface for the Visage attendance system. It features a capacitive touchscreen interface, WiFi connectivity, and RESTful API endpoints for real-time attendance notifications and direct ESP32-CAM face recognition integration.
 
 ## 🔧 Hardware Requirements
 
@@ -38,7 +38,7 @@ Visage ESP32 Display is an IoT display controller that serves as a visual interf
 - **🎨 Touch-Enabled Interface**: Capacitive touchscreen with button interactions
 - **📡 WiFi Connectivity**: WiFiManager for easy network configuration
 - **🔄 Real-time Updates**: Live attendance notifications via REST API
-- **👤 Face Recognition Integration**: Connects to Visage edge API for facial recognition
+- **👤 Face Recognition Integration**: Connects to ESP32-CAM for facial recognition
 - **🌐 Web Server**: Built-in web interface for testing and configuration
 - **🔔 Notification System**: Visual feedback for entry/exit attendance
 - **⏰ Time-based Greetings**: Context-aware welcome/goodbye messages
@@ -83,12 +83,12 @@ Wire                      // I2C communication
 
 ### 2. Software Configuration
 
-#### Update Edge API Endpoint
+#### Update ESP32-CAM API Endpoint
 
-In `visage-display.ino`, modify the edge API base URL:
+In `visage-display.ino`, modify the ESP32-CAM API base URL:
 
 ```cpp
-String edgeApiBaseUrl = "http://192.168.1.100:8000";
+String camApiBaseUrl = "http://192.168.1.141:81";
 ```
 
 #### Central Server Configuration
@@ -177,7 +177,7 @@ The web server runs on port 80 and provides the following endpoints:
 
 1. User taps the attendance button
 2. Display shows "Processing..." overlay
-3. System calls edge API for face recognition
+3. System calls ESP32-CAM API for face recognition
 4. Results displayed with user name and timestamp
 5. Automatically syncs with central server
 6. Returns to welcome screen after timeout
@@ -258,15 +258,15 @@ WiFi.config(local_ip, gateway, subnet);
 
 ### API Calls Failing
 
-- Verify edge API endpoint URL is correct
-- Ensure device and edge API are on same network or have connectivity
+- Verify ESP32-CAM API endpoint URL is correct
+- Ensure device and ESP32-CAM are on same network or have connectivity
 - Check firewall settings
 - Monitor Serial output for HTTP response codes
 
 ### Face Recognition Not Working
 
-- Confirm edge API service is running
-- Check camera connection to edge device
+- Confirm ESP32-CAM service is running
+- Check camera connection and ESP32-CAM power
 - Verify API endpoint returns valid JSON
 - Review Serial Monitor for detailed error messages
 
@@ -290,7 +290,7 @@ Enable Serial Monitor (115200 baud) to view:
          │
          ├─→ Touch Input → Trigger Recognition
          │
-         ├─→ Edge API → Face Recognition
+         ├─→ ESP32-CAM → Face Recognition
          │
          ├─→ Central Server → Update Records
          │
@@ -308,6 +308,7 @@ visage-esp32-display/
 ├── .gitignore           # Git ignore rules
 └── README.md            # This file
 ```
+
              |
 
 ## 🤝 Contributing
@@ -335,7 +336,7 @@ For issues, questions, or contributions:
 
 ## 🔗 Related Projects
 
-- **Visage Edge API**: Face recognition service
+- **Visage ESP32-CAM**: Face recognition camera module
 - **Visage Central Server**: Main attendance management system
 
 ---
