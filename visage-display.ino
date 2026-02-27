@@ -118,8 +118,8 @@ const int updateButtonY = 190;
 const int updateButtonW = 240;
 const int updateButtonH = 70;
 
-// Edge API integration
-String edgeApiBaseUrl = "http://192.168.1.100:8000"; 
+// ESP32-CAM API integration
+String camApiBaseUrl = "http://192.168.1.141:81"; 
 bool isProcessingRecognition = false;
 String lastRecognitionResult = "";
 unsigned long recognitionStartTime = 0;
@@ -158,11 +158,11 @@ AttendanceType getAttendanceTypeFromTime() {
 }
 
 /*******************************************************************************
- * EDGE API INTEGRATION
+ * ESP32-CAM API INTEGRATION
  ******************************************************************************/
 
 
-// Call visage-edge trigger recognition API
+// Call ESP32-CAM trigger recognition API
 bool callTriggerRecognition(String attendanceType) {
   if (WiFi.status() != WL_CONNECTED) {
     Serial.println("WiFi not connected, cannot call API");
@@ -170,7 +170,7 @@ bool callTriggerRecognition(String attendanceType) {
   }
   
   HTTPClient http;
-  String url = edgeApiBaseUrl + "/api/v1/attendance/trigger";
+  String url = camApiBaseUrl + "/api/v1/attendance/trigger";
   
   http.begin(url);
   http.setTimeout(10000); 
@@ -1305,7 +1305,7 @@ bool callChangeAttendanceType(String recordId, String newAttendanceType) {
   }
   
   HTTPClient http;
-  String url = edgeApiBaseUrl + "/api/v1/attendance/change_attendance_type";
+  String url = camApiBaseUrl + "/api/v1/attendance/change_attendance_type";
   
   http.begin(url);
   http.setTimeout(10000); // 10 second timeout
