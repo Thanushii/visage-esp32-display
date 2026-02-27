@@ -1,0 +1,69 @@
+# Arduino/ESP32 Build Files
+*.elf
+*.bin
+*.hex
+*.eep
+*.lss
+*.map
+*.sym
+*.o
+*.a
+*.d
+build/
+*.ino.cpp
+
+# PlatformIO
+.pio/
+.pioenvs/
+.piolibdeps/
+lib/readme.txt
+
+# Arduino IDE
+*.bak
+*~
+*.swp
+*.swo
+
+# VS Code
+.vscode/
+*.code-workspace
+.history/
+
+# Eclipse
+.cproject
+.project
+.settings/
+
+# Operating System Files
+# Windows
+Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Linux
+*~
+.directory
+
+# Logs and Databases
+*.log
+*.sql
+*.sqlite
+
+# Temporary Files
+*.tmp
+temp/
+tmp/
+
+# Credentials and Secrets
+secrets.h
+config_private.h
+*.key
+*.pem
+credentials.txt
